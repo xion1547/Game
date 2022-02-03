@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comforter&display=swap" rel="stylesheet">
     <script src="functions.js"></script>
     <title></title>
 </head>
@@ -22,21 +25,19 @@
             <span class="boxes" id="box10" onclick="changeBackground()"></span>
         </div>
     </section>
-    <nav role="navigation">
+    <nav role="navigation" id="nav-bar">
         <span id="top-slider"></span>
         <span id="bottom-slider"></span>
         <div id="menu-button">
-            <input type="checkbox" />
+            <input id="menu-checkbox" type="checkbox" onclick="deployMenu()"/>
             <div id="logo">
-                <img id="logo-image" src="Logo.png" />
+                <img id="logo-image" src="Logo-removedbg.png" />
             </div>
-            <div id="menu-container">
-                <ul id="options">
-                    <li>test</li>
-                    <li>test</li>
-                    <li>test</li>
-                </ul>
-            </div>
+        </div>
+        <div id="menu-container">
+            <ul id="options">
+                <li onclick="startGame()">Play</li>
+            </ul>
         </div>
     </nav>
 </body>
