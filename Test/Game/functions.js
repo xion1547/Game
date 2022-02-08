@@ -72,7 +72,10 @@ function deployMenu() {
         document.getElementById('logo').style.transform = 'translate(40px, 50px)';
         document.getElementById('logo').style.transitionDuration = '2s';
         document.getElementById('menu-checkbox').setAttribute('style', 'width: 16vh; height: 16vh; top: 13vh; left: 13vh; z-index:6;');
-        document.getElementsByClassName('game-container')[0].setAttribute('style', 'z-index:1;');
+        document.getElementById('nav-bar').style.zIndex = '1';
+        document.getElementsByClassName('game-box')[0].style.zIndex = '1';
+        document.getElementsByClassName('slider')[0].style.zIndex = 'none';
+        document.getElementsByClassName('slider')[1].style.zIndex = 'none';
         flash();
         slideIn();
     } else {
@@ -124,14 +127,13 @@ function deployMenu() {
 }
 
 function startGame() {
-    console.log('YAYAYYAYAYA');
     document.getElementById('menu-button').setAttribute('style', 'height: 20vh; width: 20vh; transform: all 1s linear;');
     document.getElementById('logo').setAttribute('style', 'top: 64px; left: 59px; transform: translate(0px, 0px);');
     document.getElementById('logo').style.transitionDuration = '2s';
-    document.getElementsByClassName('game-container')[0].setAttribute('style', 'z-index:2;');
-    document.getElementsByClassName('game-container')[0].style.transitionDuration = '3s';
+    document.getElementsByClassName('game-box')[0].style.zIndex = '2';
     document.getElementById('nav-bar').style.background = 'none';
     document.getElementById('nav-bar').style.transitionDuration = '1s';
+    document.getElementById('nav-bar').style.zIndex = 'auto';
     document.getElementById('menu-container').setAttribute('style', 'z-index: 2; opacity: 0; transition: all 1s ease-out;');
     document.getElementById('menu-checkbox').checked = false;
     slideOut();
@@ -144,4 +146,8 @@ function slideOut() {
     document.getElementById('top-slider').style.transitionDuration = '2s';
     document.getElementById('bottom-slider').style.transform = 'translate(-150vh, 30vh)';
     document.getElementById('bottom-slider').style.transitionDuration = '2s';
+    setTimeout(() => {
+        document.getElementsByClassName('slider')[0].style.zIndex = '-1';
+        document.getElementsByClassName('slider')[1].style.zIndex = '-1';
+    }, 500);
 }

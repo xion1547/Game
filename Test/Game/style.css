@@ -1,24 +1,24 @@
 ﻿body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
 }
 
     body .game-box {
+        position:absolute;
         padding: 0;
         margin: 0;
         height: 100vh;
         width: 100%;
-        display:flex;
+        display: flex;
         flex-flow: row wrap;
         justify-content: center;
         align-content: center;
         align-items: center;
+        z-index: 1;
         background: linear-gradient(90deg, rgba(255,196,254,1) 0%, rgba(255,143,254,1) 22%, rgba(212,219,255,1) 50%, rgba(106,254,255,1) 76%, rgba(168,254,255,1) 100%);
     }
 
 .game-container {
-    z-index: 1;
     display: flex;
     flex-flow: row wrap;
     align-content: space-around;
@@ -49,12 +49,12 @@ body .game-box .game-container .boxes {
 
 #nav-bar {
     height: 100vh;
-    overflow: hidden;
-    width: 200vh;
-    z-index: 1;
+    width: 100vw;
     display: flex;
-    position: relative;
-    bottom: 100vh;
+    position: absolute;
+    top: 0vh;
+    z-index: 1;
+    overflow: hidden;
     background: #708238;
 }
 
@@ -63,10 +63,10 @@ body .game-box .game-container .boxes {
     position: absolute;
     background: radial-gradient(circle, rgba(187,6,214,1) 0%, rgba(104,226,251,1) 70%);
     box-shadow: 10px 10px 10px 3px rgba(0, 0, 0, 0.3), inset -10px -10px 20px 3px rgba(0, 0, 0, 0.2), inset 10px 10px 20px 3px rgba(255, 255, 255, 0.5);
-    top: -5vh;
-    left: -5vh;
-    height: 40vh;
-    width: 40vh;
+    top: -5%;
+    left: -2.73%;
+    height: 40%;
+    width: 21.8%;
     border-radius: 100%;
     flex-flow: row wrap;
     justify-content: flex-end;
@@ -75,11 +75,18 @@ body .game-box .game-container .boxes {
     transition: all 1s ease-out;
 }
 
+@media scren and (max-width: 1000px) {
+    #menu-button {
+        height: 10vh;
+        width: 10vh;
+    }
+}
+
 #nav-bar #menu-checkbox {
     display: block;
     position: absolute;
-    top: 13vh;
-    left: 13vh;
+    top:130px;
+    left:100px;
     width: 16vh;
     height: 16px;
     opacity: 0;
@@ -126,7 +133,7 @@ body .game-box .game-container .boxes {
     border-top: 150vh solid transparent;
     z-index: 3;
     left: -361.5vh;
-    top:-100vh;
+    top: -100vh;
     transform: rotate(-17deg);
 }
 
@@ -141,10 +148,10 @@ body .game-box .game-container .boxes {
     flex-flow: row wrap;
     border-radius: 15%;
     background: linear-gradient(90deg, rgba(248,104,255,1) 0%, rgba(191,126,255,1) 56%, rgba(118,252,255,1) 100%);
-    height: 75vh;
-    width: 50vh;
-    top: 13vh;
-    left: 65vh;
+    height: 75%;
+    width: 30%;
+    top: 13%;
+    left: 35.6%;
     opacity: 1;
     justify-content: center;
     align-content: center;
@@ -177,7 +184,7 @@ body .game-box .game-container .boxes {
             cursor: pointer;
         }
 
-.container div {
+#game-over-animation div {
     position: absolute;
     top: 0;
     right: 0;
@@ -193,7 +200,7 @@ body .game-box .game-container .boxes {
     animation: spinning 3s linear;
 }
 
-    .container div:last-child {
+    #game-over-animation div:last-child {
         background: none;
     }
 
@@ -201,7 +208,7 @@ body .game-box .game-container .boxes {
     background: transparent;
 }
 
-.container {
+#game-over-animation {
     background: none;
     position: relative;
     top: -1450vh;
