@@ -13,17 +13,19 @@
 <body>
     <section class="game-box">
         <div class="game-container">
-            <span class="boxes" id="box1" onclick="changeBackground()">1</span>
-            <span class="boxes" id="box2" onclick="changeBackground()">2</span>
-            <span class="boxes" id="box3" onclick="changeBackground()">3</span>
-            <span class="boxes" id="box4" onclick="changeBackground()">4</span>
-            <span class="boxes" id="box5" onclick="changeBackground()">5</span>
-            <span class="boxes" id="box6" onclick="changeBackground()">6</span>
-            <span class="boxes" id="box7" onclick="changeBackground()">7</span>
-            <span class="boxes" id="box8" onclick="changeBackground()">8</span>
-            <span class="boxes" id="box9" onclick="changeBackground()">9</span>
-            <span class="boxes" id="box10" onclick="changeBackground()">10</span>
+            <span class="boxes" id="box1" onclick="changeBackground()"></span>
+            <span class="boxes" id="box2" onclick="changeBackground()"></span>
+            <span class="boxes" id="box3" onclick="changeBackground()"></span>
+            <span class="boxes" id="box4" onclick="changeBackground()"></span>
+            <span class="boxes" id="box5" onclick="changeBackground()"></span>
+            <span class="boxes" id="box6" onclick="changeBackground()"></span>
+            <span class="boxes" id="box7" onclick="changeBackground()"></span>
+            <span class="boxes" id="box8" onclick="changeBackground()"></span>
+            <span class="boxes" id="box9" onclick="changeBackground()"></span>
+            <span class="boxes" id="box10" onclick="changeBackground()"></span>
         </div>
+        <div id="points"></div>
+        <div id="help"><p>?</p></div>
     </section>
     <nav role="navigation" id="nav-bar">
         <span class="slider" id="top-slider"></span>
@@ -40,10 +42,9 @@
             </ul>
         </div>
     </nav>
-    <!--
-    <div id="first-circle"></div>
     <div id="game-over-animation">
-        <div>
+        <div id="first-circle"></div>
+        <div id="swirl">
             <div>
                 <div>
                     <div>
@@ -53,7 +54,9 @@
                                     <div>
                                         <div>
                                             <div>
-                                                <div id="last-circle">
+                                                <div>
+                                                    <div id="last-circle">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,6 +69,5 @@
             </div>
         </div>
     </div>
-        -->
 </body>
 </html>

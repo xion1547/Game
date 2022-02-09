@@ -4,7 +4,7 @@
 }
 
     body .game-box {
-        position:absolute;
+        position: absolute;
         padding: 0;
         margin: 0;
         height: 100vh;
@@ -15,7 +15,7 @@
         align-content: center;
         align-items: center;
         z-index: 1;
-        background: linear-gradient(90deg, rgba(255,196,254,1) 0%, rgba(255,143,254,1) 22%, rgba(212,219,255,1) 50%, rgba(106,254,255,1) 76%, rgba(168,254,255,1) 100%);
+        background: linear-gradient(157deg, rgba(255,255,255,1) 0%, rgba(249,50,255,1) 22%, rgba(255,255,255,1) 45%, rgba(44,219,255,1) 74%, rgba(255,255,255,1) 100%);
     }
 
 .game-container {
@@ -36,12 +36,74 @@ body .game-box .game-container .boxes {
     border-radius: 15%;
     height: 45%;
     width: 17%;
-    font-family: 'Comforter', cursive;
-    font-size: 300%;
     padding: 0;
     margin: 0;
-    box-shadow: 20px 20px 20px 3px rgba(0, 0, 0, 0.3), inset -10px -10px 20px 3px rgba(0, 0, 0, 0.3), inset 10px 10px 20px 3px rgba(255, 255, 255, 0.3);
+    box-shadow: 2.5vh 2.5vh 2.5vh .38vh rgba(0, 0, 0, 0.3), inset -1.25vh -1.25vh 2.5vh .38vh rgba(0, 0, 0, 0.3), inset 1.25vh 1.25vh 2.5vh .38vh rgba(255, 255, 255, 0.3);
     background: radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%);
+}
+
+body #help {
+    height: 3%;
+    width: 1.64%;
+    display: flex;
+    top: 3%;
+    right: 1.64%;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    background: rgb(40, 40, 40);
+    color: white;
+    border-radius: 100%;
+    font-size: 2.5vh;
+    font-family: 'Comforter', cursive;
+    transition: all 2s ease-in-out;
+    box-shadow: 0.25vh 0.25vh 0.25vh 0.08vh rgba(0, 0, 0, 0.3), inset -0.25vh -0.25vh 0.5vh 0.08vh rgba(0, 0, 0, 1), inset 0.25vh 0.25vh 0.5vh 0.08vh rgba(255, 255, 255, 0.5);
+}
+
+    body #help:hover {
+        align-items: flex-start;
+        align-content: flex-start;
+        font-size: 30px;
+        content: none;
+        height: 40%;
+        width: 12%;
+        padding: 1%;
+        border-radius: 15%;
+        transition: width 1s ease-in, height 3s ease-in-out, border-radius 3s ease-out, padding 1s ease-in;
+        box-shadow: 1.25vh 1.25vh 1.25vh 0.38vh rgba(0, 0, 0, 0.5), inset -1.25vh -1.25vh 2.5vh 0.38vh rgba(0, 0, 0, 0.9), inset 1.25vh 1.25vh 2.5vh 0.38vh rgba(255, 255, 255, 0.5);
+    }
+
+    body #help p {
+        opacity: 1;
+        transition: opacity 1s ease-in;
+    }
+
+    body #help:hover p {
+        opacity: 0;
+        transition: opacity 0s ease-in;
+    }
+
+        body #help:hover:before {
+            content:'';
+            animation: show-text 4s ease-in;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+        }
+
+@keyframes show-text {
+    0% {
+        content: '';
+        opacity: 0;
+    }
+    50% {
+        content: 'Click on the blinking light to begin! Once the game begins you have to click the lights in the correct order that is shown.';
+        opacity: 0;
+    }
+    100% {
+        content: 'Click on the blinking light to begin! Once the game begins you have to click the lights in the correct order that is shown.';
+        opacity: 1;
+    }
 }
 
 /*radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%)
@@ -62,7 +124,7 @@ body .game-box .game-container .boxes {
     display: flex;
     position: absolute;
     background: radial-gradient(circle, rgba(187,6,214,1) 0%, rgba(104,226,251,1) 70%);
-    box-shadow: 10px 10px 10px 3px rgba(0, 0, 0, 0.3), inset -10px -10px 20px 3px rgba(0, 0, 0, 0.2), inset 10px 10px 20px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 1.25vh 1.25vh 1.25vh 0.38vh rgba(0, 0, 0, 0.3), inset -1.25vh -1.25vh 2.5vh 0.38vh rgba(0, 0, 0, 0.2), inset 1.25vh 1.25vh 2.5vh 0.38vh rgba(255, 255, 255, 0.5);
     top: -5%;
     left: -2.73%;
     height: 40%;
@@ -159,7 +221,7 @@ body .game-box .game-container .boxes {
     padding: 0;
     margin: 0;
     transition: all 1s ease-out;
-    box-shadow: 10px 10px 10px 3px rgba(0, 0, 0, 0.3), inset -10px -10px 20px 3px rgba(0, 0, 0, 0.2), inset 10px 10px 20px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 1.25vh 1.25vh 1.25vh 0.38vh rgba(0, 0, 0, 0.3), inset -1.25vh -1.25vh 2.5vh 0.38vh rgba(0, 0, 0, 0.2), inset 1.25vh 1.25vh 2.5vh 0.38vh rgba(255, 255, 255, 0.5);
 }
 
     #menu-container #options {
@@ -184,7 +246,16 @@ body .game-box .game-container .boxes {
             cursor: pointer;
         }
 
-#game-over-animation div {
+
+#game-over-animation {
+    height:100vh;
+    width:100vw;
+    overflow:hidden;
+    position:absolute;
+    z-index: -2;
+}
+
+#swirl div {
     position: absolute;
     top: 0;
     right: 0;
@@ -196,11 +267,11 @@ body .game-box .game-container .boxes {
     font-family: arial;
     width: 90%;
     border-radius: 50%;
-    border-right: 9px solid rgba(0, 0, 0, 0.8);
-    animation: spinning 3s linear;
+    border-right: 2vh solid rgba(0, 0, 0, 0.8);
+    animation: spinning 4s ease-in;
 }
 
-    #game-over-animation div:last-child {
+    #swirl div:last-child {
         background: none;
     }
 
@@ -208,54 +279,54 @@ body .game-box .game-container .boxes {
     background: transparent;
 }
 
-#game-over-animation {
+#swirl {
     background: none;
-    position: relative;
-    top: -1450vh;
-    left: -33vw;
-    width: 300vh;
-    height: 300vh;
-    z-index: -1;
-    animation: shrink-container 3s linear;
+    position: absolute;
+    z-index: auto;
+    animation: shrink-container 4s ease-in;
 }
 
 #first-circle {
-    position: relative;
-    width: 230vh;
-    height: 230vh;
-    border: 460vh solid rgba(0, 0, 0, 1);
-    top: -720vh;
-    left: -490vh;
+    position: absolute;
+    width: 125%;
+    height: 250%;
+    top: -375%;
+    left: -170%;
+    border: 300vh solid rgba(0, 0, 0, 1);
     border-radius: 100%;
-    z-index: -1;
-    animation: shrink 3s linear;
+    z-index: auto;
+    animation: shrink 4s ease-in;
 }
 
 @keyframes shrink {
     0% {
-        width: 240vh;
-        height: 240vh;
-        transform: translate(0,0);
+        width: 125%;
+        height: 250%;
+        top: -375%;
+        left: -170%;
     }
 
     100% {
         width: 0vh;
         height: 0vh;
-        transform: translate(120vh,110vh);
+        top: -250%;
+        left: -114.1%;
     }
 }
 
 @keyframes shrink-container {
     0% {
-        width: 300vh;
-        height: 300vh;
-        transform: translate(0,0);
+        width: 164.1%;
+        height: 300%;
+        top: -100%;
+        left: -28%;
     }
 
     100% {
         width: 0vh;
         height: 0vh;
-        transform: translate(150vh,380vh);
+        top: 50%;
+        left: 50%;
     }
 }
 
@@ -263,11 +334,9 @@ body .game-box .game-container .boxes {
 @keyframes spinning {
     0% {
         transform: rotate(-45deg);
-        border-right: 9px solid rgba(0, 0, 0, 0.9);
     }
 
     100% {
         transform: rotate(270deg);
-        border-right: 9px solid rgba(0, 0, 0, 3);
     }
 }

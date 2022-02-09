@@ -76,6 +76,8 @@ function deployMenu() {
         document.getElementsByClassName('game-box')[0].style.zIndex = '1';
         document.getElementsByClassName('slider')[0].style.zIndex = 'none';
         document.getElementsByClassName('slider')[1].style.zIndex = 'none';
+        document.getElementById('menu-container').style.zIndex = 'none';
+        clearTimeout(t5);
         flash();
         slideIn();
     } else {
@@ -83,16 +85,15 @@ function deployMenu() {
         document.getElementById('logo').setAttribute('style', 'top: 64px; left: 59px; transform: translate(0px, 0px);');
         document.getElementById('logo').style.transitionDuration = '2s'; 
         document.getElementById('menu-checkbox').setAttribute('style', 'width: 50px; height: 45px; top: 60px; left: 55px; z-index:6;');
-        document.getElementById('menu-container').style.opacity = '0';
-        document.getElementsByClassName('game-container')[0].setAttribute('style', 'z-index:2;');
-        document.getElementsByClassName('game-container')[0].style.transitionDuration = '3s';
+        document.getElementById('menu-container').setAttribute('style', 'opacity: 0; transition: all 1s ease-out;');
+        document.getElementById('nav-bar').style.background = 'none';
+        document.getElementById('nav-bar').style.transitionDuration = '1s';
         clearTimeout(t1);
         clearTimeout(t2);
         clearTimeout(t3);
         clearTimeout(t4);
-        document.getElementById('nav-bar').style.background = 'none';
+        clearTimeout(t5);
         slideOut();
-        document.getElementById('menu-container').setAttribute('style', 'z-index: 2; opacity: 0;');
     }
 
     /*When you use setTimeout, it creates a unique identifier that is a number.
@@ -130,11 +131,9 @@ function startGame() {
     document.getElementById('menu-button').setAttribute('style', 'height: 20vh; width: 20vh; transform: all 1s linear;');
     document.getElementById('logo').setAttribute('style', 'top: 64px; left: 59px; transform: translate(0px, 0px);');
     document.getElementById('logo').style.transitionDuration = '2s';
-    document.getElementsByClassName('game-box')[0].style.zIndex = '2';
     document.getElementById('nav-bar').style.background = 'none';
     document.getElementById('nav-bar').style.transitionDuration = '1s';
-    document.getElementById('nav-bar').style.zIndex = 'auto';
-    document.getElementById('menu-container').setAttribute('style', 'z-index: 2; opacity: 0; transition: all 1s ease-out;');
+    document.getElementById('menu-container').setAttribute('style', 'opacity: 0; transition: all 1s ease-out;');
     document.getElementById('menu-checkbox').checked = false;
     slideOut();
     document.getElementById('menu-checkbox').setAttribute('style', 'width: 50px; height: 45px; top: 60px; left: 55px; z-index:6;');
@@ -146,8 +145,11 @@ function slideOut() {
     document.getElementById('top-slider').style.transitionDuration = '2s';
     document.getElementById('bottom-slider').style.transform = 'translate(-150vh, 30vh)';
     document.getElementById('bottom-slider').style.transitionDuration = '2s';
-    setTimeout(() => {
+    t5 = setTimeout(() => {
+        document.getElementsByClassName('game-box')[0].style.zIndex = '2';
+        document.getElementById('nav-bar').style.zIndex = 'auto';
+        document.getElementById('menu-container').style.zIndex = '-1';
         document.getElementsByClassName('slider')[0].style.zIndex = '-1';
         document.getElementsByClassName('slider')[1].style.zIndex = '-1';
-    }, 500);
+    }, 1000);
 }
