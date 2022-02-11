@@ -1,17 +1,11 @@
 // JavaScript source code
-/*Game Class*/
+/*Classes*/
 class Game {
 
     constructor(stage, gameBoxPath, points) {
         this.stage = stage;
         this.gameBoxPath = gameBoxPath;
         this.points = points;
-    }
-
-    addToBoxPath(gameBoxPath) {
-        var boxNumberId = "box" + (Math.floor(Math.random() * 10) + 1);
-        gameBoxPath.push(boxNumberId);
-        this.stage = this.stage + 1;
     }
 
     getGameBoxPath() {
@@ -24,6 +18,15 @@ class Game {
 
     getPoints() {
         return this.points;
+    }
+
+    addToGameBoxPath() {
+        let boxNumberId = "box" + (Math.floor(Math.random() * 10) + 1);
+        while (boxNumberId == this.gameBoxPath[gameBoxPath.length - 1]) {
+            boxNumberId = "box" + (Math.floor(Math.random() * 10) + 1);
+        }
+        this.gameBoxPath.push(boxNumberId);
+        this.stage = this.stage + 1;
     }
 }
 
@@ -50,46 +53,58 @@ var player = new Player(playerBoxPath);
 
 function changeBackground() {
     let boxColor = document.getElementById(event.srcElement.id);
-    player.addToBoxPath
+    player.addToPlayerBoxPath(boxColor);
     boxColor.style.background = 'radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%)';
     setTimeout(() => {
         boxColor.style.background = 'radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%)';
     }, 500);
-    if (game.getStage == player.getPlayerBoxPath.length) {
-        setTimeout(() => {
-            boxColor.style.background = 'radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%)';
-        }, 2000);
-    }
 }
 
 function revealPath() {
+    document.getElementById('first-circle').style.zIndex = '3';
+    document.getElementById(game.getGameBoxPath()[0]).className = 'boxes';
+    for (let i = 1; i < game.getStage() + 1; i++) {
+        let boxColor = document.getElementById(game.getGameBoxPath()[i - 1]);
+        setTimeout(() => {
+            boxColor.style.background = 'radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%)';
+        }, ((i - 1) * 500) + 1);
+        setTimeout(() => {
+            boxColor.style.background = 'radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%)';
+        }, i * 500);
+        if (game.getStage() == i) {
 
+        }
+    }
 }
 
 function deployMenu() {
     if (document.getElementById('menu-checkbox').checked == true) {
-        document.getElementById('menu-button').setAttribute('style', 'height: 40vh; width: 40vh; transform: all 1s ease-out;');
+        document.getElementById('menu-button').setAttribute('style', 'height: 40%; width: 21.8%; transform: all 1s ease-out;');
         document.getElementById('logo').style.transform = 'translate(40px, 50px)';
         document.getElementById('logo').style.transitionDuration = '2s';
         document.getElementById('menu-checkbox').setAttribute('style', 'width: 16vh; height: 16vh; top: 13vh; left: 13vh; z-index:6;');
-        document.getElementsByClassName('game-container')[0].setAttribute('style', 'z-index:1;');
+        document.getElementById('nav-bar').style.zIndex = '1';
+        document.getElementsByClassName('game-box')[0].style.zIndex = '1';
+        document.getElementsByClassName('slider')[0].style.zIndex = 'none';
+        document.getElementsByClassName('slider')[1].style.zIndex = 'none';
+        document.getElementById('menu-container').style.zIndex = 'none';
+        clearTimeout(t5);
         flash();
         slideIn();
     } else {
-        document.getElementById('menu-button').setAttribute('style', 'height: 20vh; width: 20vh; transform: all 1s linear;');
+        document.getElementById('menu-button').setAttribute('style', 'height: 20%; width: 10.94%; transform: all 1s linear;');
         document.getElementById('logo').setAttribute('style', 'top: 64px; left: 59px; transform: translate(0px, 0px);');
         document.getElementById('logo').style.transitionDuration = '2s'; 
         document.getElementById('menu-checkbox').setAttribute('style', 'width: 50px; height: 45px; top: 60px; left: 55px; z-index:6;');
-        document.getElementById('menu-container').style.opacity = '0';
-        document.getElementsByClassName('game-container')[0].setAttribute('style', 'z-index:2;');
-        document.getElementsByClassName('game-container')[0].style.transitionDuration = '3s';
+        document.getElementById('menu-container').setAttribute('style', 'opacity: 0; transition: all 1s ease-out;');
+        document.getElementById('nav-bar').style.background = 'none';
+        document.getElementById('nav-bar').style.transitionDuration = '1s';
         clearTimeout(t1);
         clearTimeout(t2);
         clearTimeout(t3);
         clearTimeout(t4);
-        document.getElementById('nav-bar').style.background = 'none';
+        clearTimeout(t5);
         slideOut();
-        document.getElementById('menu-container').setAttribute('style', 'z-index: 2; opacity: 0;');
     }
 
     /*When you use setTimeout, it creates a unique identifier that is a number.
@@ -124,19 +139,18 @@ function deployMenu() {
 }
 
 function startGame() {
-    console.log('YAYAYYAYAYA');
     document.getElementById('menu-button').setAttribute('style', 'height: 20vh; width: 20vh; transform: all 1s linear;');
     document.getElementById('logo').setAttribute('style', 'top: 64px; left: 59px; transform: translate(0px, 0px);');
     document.getElementById('logo').style.transitionDuration = '2s';
-    document.getElementsByClassName('game-container')[0].setAttribute('style', 'z-index:2;');
-    document.getElementsByClassName('game-container')[0].style.transitionDuration = '3s';
     document.getElementById('nav-bar').style.background = 'none';
     document.getElementById('nav-bar').style.transitionDuration = '1s';
-    document.getElementById('menu-container').setAttribute('style', 'z-index: 2; opacity: 0; transition: all 1s ease-out;');
+    document.getElementById('menu-container').setAttribute('style', 'opacity: 0; transition: all 1s ease-out;');
     document.getElementById('menu-checkbox').checked = false;
     slideOut();
     document.getElementById('menu-checkbox').setAttribute('style', 'width: 50px; height: 45px; top: 60px; left: 55px; z-index:6;');
-    game.addToBoxPath(gameBoxPath);
+    game.addToGameBoxPath(gameBoxPath);
+    document.getElementById(game.getGameBoxPath()[0]).className += ' blink';
+    document.getElementById(game.getGameBoxPath()[0]).addEventListener('click', revealPath);
 }
 
 function slideOut() {
@@ -144,4 +158,11 @@ function slideOut() {
     document.getElementById('top-slider').style.transitionDuration = '2s';
     document.getElementById('bottom-slider').style.transform = 'translate(-150vh, 30vh)';
     document.getElementById('bottom-slider').style.transitionDuration = '2s';
+    t5 = setTimeout(() => {
+        document.getElementsByClassName('game-box')[0].style.zIndex = '2';
+        document.getElementById('nav-bar').style.zIndex = 'auto';
+        document.getElementById('menu-container').style.zIndex = '-1';
+        document.getElementsByClassName('slider')[0].style.zIndex = '-1';
+        document.getElementsByClassName('slider')[1].style.zIndex = '-1';
+    }, 1000);
 }
