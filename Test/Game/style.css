@@ -132,7 +132,7 @@ body .game-box .game-container .blink {
     width: 100vw;
     display: flex;
     position: absolute;
-    top: 0vh;
+    top: 0;
     z-index: 1;
     overflow: hidden;
     background: #708238;
@@ -155,7 +155,7 @@ body .game-box .game-container .blink {
     transition: all 1s ease-out;
 }
 
-@media scren and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     #menu-button {
         height: 10vh;
         width: 10vh;
@@ -165,10 +165,10 @@ body .game-box .game-container .blink {
 #nav-bar #menu-checkbox {
     display: block;
     position: absolute;
-    top: 64px;
-    left: 59px;
-    width: 16vh;
-    height: 16vh;
+    top: 30%;
+    left: 25%;
+    width: 45%;
+    height: 38%;
     opacity: 0;
     z-index: 4;
     cursor: pointer;
@@ -176,8 +176,8 @@ body .game-box .game-container .blink {
 
 #logo {
     position: absolute;
-    top: 64px;
-    left: 59px;
+    top: 17%;
+    left: 14%;
     z-index: 5;
     transform: translate(40px, 50px);
 }
@@ -187,8 +187,8 @@ body .game-box .game-container .blink {
 }
 
 #nav-bar #top-slider {
-    height: 0px;
-    width: 0px;
+    height: 0;
+    width: 0;
     position: relative;
     border-left: 150vh solid transparent;
     border-right: 150vh solid #708238;
@@ -202,8 +202,8 @@ body .game-box .game-container .blink {
 }
 
 #nav-bar #bottom-slider {
-    height: 0px;
-    width: 0px;
+    height: 0;
+    width: 0;
     position: relative;
     border-left: 150vh solid #708238;
     border-right: 150vh solid transparent;
@@ -254,7 +254,6 @@ body .game-box .game-container .blink {
 
         #menu-container #options li {
             height: 25%;
-            width: 35%;
             font-family: 'Comforter', cursive;
             font-size: 100px;
             padding: 0;
@@ -271,7 +270,7 @@ body .game-box .game-container .blink {
     z-index: -2;
 }
 
-#swirl div {
+#swirl .yes {
     position: absolute;
     top: 0;
     right: 0;
@@ -279,20 +278,10 @@ body .game-box .game-container .blink {
     left: 0;
     margin: auto;
     height: 90%;
-    font-size: 20px;
-    font-family: arial;
     width: 90%;
     border-radius: 50%;
     border-right: 2vh solid rgba(0, 0, 0, 0.8);
     animation: spinning 4s ease-in;
-}
-
-    #swirl div:last-child {
-        background: none;
-    }
-
-#last-child {
-    background: transparent;
 }
 
 #swirl {
@@ -319,14 +308,14 @@ body .game-box .game-container .blink {
         width: 125%;
         height: 250%;
         top: -375%;
-        left: -170%;
+        left: -155%;
     }
 
     100% {
-        width: 0vh;
-        height: 0vh;
+        width: 0;
+        height: 0;
         top: -250%;
-        left: -114.1%;
+        left: -101.1%;
     }
 }
 
@@ -336,13 +325,15 @@ body .game-box .game-container .blink {
         height: 300%;
         top: -100%;
         left: -28%;
+        opacity: 0;
     }
 
     100% {
-        width: 0vh;
-        height: 0vh;
+        width: 0;
+        height: 0;
         top: 50%;
         left: 50%;
+        opacity: 1;
     }
 }
 
@@ -352,6 +343,6 @@ body .game-box .game-container .blink {
     }
 
     100% {
-        transform: rotate(270deg);
+        transform: rotate(90deg);
     }
 }

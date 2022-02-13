@@ -14,16 +14,16 @@
 <body>
     <section class="game-box">
         <div class="game-container">
-            <span class="boxes" id="box1" onclick="changeBackground()"></span>
-            <span class="boxes" id="box2" onclick="changeBackground()"></span>
-            <span class="boxes" id="box3" onclick="changeBackground()"></span>
-            <span class="boxes" id="box4" onclick="changeBackground()"></span>
-            <span class="boxes" id="box5" onclick="changeBackground()"></span>
-            <span class="boxes" id="box6" onclick="changeBackground()"></span>
-            <span class="boxes" id="box7" onclick="changeBackground()"></span>
-            <span class="boxes" id="box8" onclick="changeBackground()"></span>
-            <span class="boxes" id="box9" onclick="changeBackground()"></span>
-            <span class="boxes" id="box10" onclick="changeBackground()"></span>
+            <span class="boxes" id="box1" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box2" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box3" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box4" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box5" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box6" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box7" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box8" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box9" onclick="changeBackground(this)"></span>
+            <span class="boxes" id="box10" onclick="changeBackground(this)"></span>
         </div>
         <div id="points"></div>
         <div id="help"><p>?</p></div>
@@ -39,24 +39,24 @@
         </div>
         <div id="menu-container">
             <ul id="options">
-                <li onclick="startGame()">Play</li>
+                <li id="play-button" onclick="startGame()">Play</li>
             </ul>
         </div>
     </nav>
     <div id="game-over-animation">
         <div id="first-circle"></div>
         <div id="swirl">
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <div>
-                                                    <div id="last-circle">
+            <div class="spin">
+                <div class="spin">
+                    <div class="spin">
+                        <div class="spin">
+                            <div class="spin">
+                                <div class="spin">
+                                    <div class="spin">
+                                        <div class="spin">
+                                            <div class="spin">
+                                                <div class="spin">
+                                                    <div class="spin">
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,6 +68,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="restart">
+        <div id="restart-button">
+            <button>Restart?</button>
         </div>
     </div>
 </body>
