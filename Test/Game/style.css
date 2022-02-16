@@ -1,23 +1,25 @@
-﻿body {
+﻿﻿body {
     padding: 0;
     margin: 0;
 }
 
 /*Game CSS*/
-    body .game-box {
-        position: absolute;
-        padding: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        z-index: 1;
-        background: linear-gradient(157deg, rgba(255,255,255,1) 0%, rgba(249,50,255,1) 22%, rgba(255,255,255,1) 45%, rgba(44,219,255,1) 74%, rgba(255,255,255,1) 100%);
-    }
+body .game-box {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    z-index: 1;
+    background: linear-gradient(157deg, rgba(255,255,255,1) 0%, rgba(249,50,255,1) 22%, rgba(255,255,255,1) 45%, rgba(44,219,255,1) 74%, rgba(255,255,255,1) 100%);
+}
 
 .game-container {
     display: flex;
@@ -85,22 +87,24 @@ body #help {
         transition: opacity 0s ease-in;
     }
 
-        body #help:hover:before {
-            content:'';
-            animation: show-text 2s ease-in;
-            animation-fill-mode: forwards;
-            animation-iteration-count: 1;
-        }
+    body #help:hover:before {
+        content: '';
+        animation: show-text 2s ease-in;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
 
 @keyframes show-text {
     0% {
         content: '';
         opacity: 0;
     }
+
     50% {
         content: 'Click on the blinking light to begin! Once the game begins you have to click the lights in the correct order that is shown.';
         opacity: 0;
     }
+
     100% {
         content: 'Click on the blinking light to begin! Once the game begins you have to click the lights in the correct order that is shown.';
         opacity: 1;
@@ -116,9 +120,11 @@ body .game-box .game-container .blink {
     0% {
         background: radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%);
     }
+
     40% {
         background: radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%);
     }
+
     100% {
         background: radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%);
     }
@@ -133,6 +139,7 @@ body .game-box .game-container .blink {
     display: flex;
     position: absolute;
     top: 0;
+    left: 0;
     z-index: 1;
     overflow: hidden;
     background: #708238;
@@ -248,8 +255,8 @@ body .game-box .game-container .blink {
         justify-content: center;
         align-content: center;
         align-items: center;
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
     }
 
         #menu-container #options li {
@@ -263,10 +270,12 @@ body .game-box .game-container .blink {
 
 /*Game Over CSS*/
 #game-over-animation {
-    height:100vh;
-    width:100vw;
-    overflow:hidden;
-    position:absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left:0;
+    overflow: hidden;
+    position: absolute;
     z-index: -2;
 }
 

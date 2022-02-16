@@ -32,16 +32,33 @@ class Game {
 
 class Player {
 
-    constructor(playerBoxPath) {
+    constructor(playerBoxPath, playerCount) {
         this.playerBoxPath = playerBoxPath;
+        this.playerCount = playerCount;
     }
 
     addToPlayerBoxPath(boxNumberId) {
-        playerBoxPath.push(boxNumberId);
+        this.playerBoxPath.push(boxNumberId);
+    }
+
+    addToPlayerCount() {
+        this.playerCount++;
     }
 
     getPlayerBoxPath() {
         return this.playerBoxPath;
+    }
+
+    getPlayerCount() {
+        return this.playerCount;
+    }
+
+    resetPlayerBoxPath() {
+        this.playerBoxPath = [];
+    }
+
+    resetPlayerCount() {
+        this.playerCount = 0;
     }
 }
 
@@ -49,11 +66,11 @@ class Player {
 let gameBoxPath = [];
 let game = new Game(0, gameBoxPath, 0);
 let playerBoxPath = [];
-let player = new Player(playerBoxPath);
+let player = new Player(playerBoxPath, -1);
 
 document.addEventListener('click', disableButtons, true);
 
-function disableButtons (e) {
+function disableButtons(e) {
     if (!e.target.className.includes('blink') &&
         !e.target.id.includes('menu-checkbox') &&
         !e.target.id.includes('play-button')) {
@@ -62,29 +79,18 @@ function disableButtons (e) {
 }
 
 function changeBackground(boxColor) {
+    let playerBox = player.getPlayerBoxPath();
+    let gameBox = game.getGameBoxPath();
+    let playerCount = player.getPlayerCount();
     player.addToPlayerBoxPath(boxColor.id);
-    if (player.getPlayerBoxPath()[player.getPlayerBoxPath().length-1] !== game.getGameBoxPath()[game.getGameBoxPath().length-1] ||
-        player.getPlayerBoxPath().length !== game.getGameBoxPath().length) {
-        console.log('game-over');
-        let outer = document.getElementById('game-over-animation');
-        let first = document.getElementById('first-circle');
-        let second = document.getElementById('swirl');
-        let spinners = document.getElementsByClassName('spin');
-        outer.style.zIndex = '8';
-        first.style.zIndex = 'auto';
-        first.style.animation = 'none';
-        first.offsetHeight;
-        first.style.animation = null;
-        second.style.zIndex = 'auto';
-        second.style.animation = 'none';
-        second.offsetHeight;
-        second.style.animation = null;
-        for (let i = 0; i < spinners.length; i++) {
-            spinners[i].className += ' yes';
-        }
-        setTimeout( () => {
-           outer.style.background = 'black';
-        }, 3900);
+    player.addToPlayerCount();
+    if (playerBox[playerCount] !== gameBox[playerCount]) {
+        gameOver();
+    } else if (playerBox.length == gameBox.length) {
+        document.addEventListener('click', disableButtons, true);
+        setTimeout(() => {
+            nextStage();
+        }, 1500);
     }
     boxColor.style.background = 'radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%)';
     setTimeout(() => {
@@ -92,29 +98,67 @@ function changeBackground(boxColor) {
     }, 500);
 }
 
+function gameOver() {
+    let outer = document.getElementById('game-over-animation');
+    let first = document.getElementById('first-circle');
+    let second = document.getElementById('swirl');
+    let spinners = document.getElementsByClassName('spin');
+    outer.style.zIndex = '8';
+    first.style.zIndex = 'auto';
+    first.style.animation = 'none';
+    first.offsetHeight;
+    first.style.animation = null;
+    second.style.zIndex = 'auto';
+    second.style.animation = 'none';
+    second.offsetHeight;
+    second.style.animation = null;
+    for (let i = 0; i < spinners.length; i++) {
+        spinners[i].className += ' yes';
+    }
+    setTimeout(() => {
+        outer.style.background = 'black';
+    }, 3900);
+}
+
+function nextStage() {
+    game.addToGameBoxPath();
+    revealPath();
+}
+
 function revealPath() {
-    document.getElementById('first-circle').style.zIndex = '3';
+    player.resetPlayerCount();
+    player.resetPlayerBoxPath();
+    let stageLevel = 0;
+    if (game.getStage() >= 5) {
+        stageLevel = 400;
+    } else if (game.getStage() >= 10) {
+        stageLevel = 300;
+    } else if (game.getStage() >= 15) {
+        stageLevel = 200;
+    } else {
+        stageLevel = 500;
+    }
     document.getElementById(game.getGameBoxPath()[0]).className = 'boxes';
     for (let i = 1; i < game.getStage() + 1; i++) {
         let boxColor = document.getElementById(game.getGameBoxPath()[i - 1]);
         setTimeout(() => {
             boxColor.style.background = 'radial-gradient(circle, rgba(196,87,255,1) 0%, rgba(223,163,255,1) 100%)';
-        }, ((i - 1) * 500) + 1);
+        }, ((i - 1) * stageLevel) + 1);
         setTimeout(() => {
             boxColor.style.background = 'radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%)';
-        }, i * 500);
+        }, i * stageLevel);
         if (game.getStage() === i) {
-            document.getElementById('first-circle').style.zIndex = '-2';
             document.removeEventListener('click', disableButtons, true);
+            document.getElementById(game.getGameBoxPath()[0]).removeEventListener('click', revealPath);
         }
     }
 }
 
 function deployMenu() {
     if (document.getElementById('menu-checkbox').checked === true) {
-        document.getElementById('menu-button').setAttribute('style', 'height: 40%; width: 21.8%; transform: all 1s linear;');
+        document.getElementById('menu-button').setAttribute('style', 'transform: scale(2) all 1s linear;');
         document.getElementById('logo').setAttribute('style', 'top: 17%; left: 14%; transform: translate(40px, 50px)');
-        document.getElementById('logo').style.transition = 'top 1s ease-out, left 1s ease-out, transform 2s ease-out';
+        document.getElementById('logo').style.transition = 'top 1s linear, left 1s linear, transform 2s ease-out';
         document.getElementById('menu-checkbox').setAttribute('style', 'z-index:6;');
         document.getElementById('nav-bar').style.zIndex = '1';
         document.getElementsByClassName('game-box')[0].style.zIndex = '1';
@@ -127,7 +171,7 @@ function deployMenu() {
     } else {
         document.getElementById('menu-button').setAttribute('style', 'height: 20%; width: 10.94%; transform: all 1s linear;');
         document.getElementById('logo').setAttribute('style', 'top: 33%; left: 30%; transform: translate(0px, 0px);');
-        document.getElementById('logo').style.transitionDuration = '2s'; 
+        document.getElementById('logo').style.transitionDuration = '2s';
         document.getElementById('menu-checkbox').setAttribute('style', 'width: 30%; height: 30%; top: 32%; left: 32%; z-index:6;');
         document.getElementById('menu-container').setAttribute('style', 'opacity: 0; transition: all 1s ease-out;');
         document.getElementById('nav-bar').style.background = 'none';
