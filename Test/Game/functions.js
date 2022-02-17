@@ -86,7 +86,7 @@ function changeBackground(boxColor) {
     player.addToPlayerCount();
     if (playerBox[playerCount] !== gameBox[playerCount]) {
         gameOver();
-    } else if (playerBox.length == gameBox.length) {
+    } else if (playerBox.length === gameBox.length) {
         document.addEventListener('click', disableButtons, true);
         setTimeout(() => {
             nextStage();
@@ -128,7 +128,7 @@ function nextStage() {
 function revealPath() {
     player.resetPlayerCount();
     player.resetPlayerBoxPath();
-    let stageLevel = 0;
+    let stageLevel;
     if (game.getStage() >= 5) {
         stageLevel = 400;
     } else if (game.getStage() >= 10) {
