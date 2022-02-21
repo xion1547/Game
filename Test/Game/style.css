@@ -45,7 +45,7 @@ body .game-box .game-container .boxes {
     background: radial-gradient(circle, rgba(169,8,255,1) 0%, rgba(216,143,255,1) 100%);
 }
 
-body #help {
+.game-box #help {
     height: 3%;
     width: 1.64%;
     display: flex;
@@ -58,36 +58,36 @@ body #help {
     background: rgb(40, 40, 40);
     color: white;
     border-radius: 100%;
-    font-size: 2.5vh;
-    font-family: 'Comforter', cursive;
+    font-size: 0.8em;
+    font-family: 'Press Start 2P', cursive;
     transition: height 0.5s ease-out, width 1.5s ease-in-out, border-radius 1.5s ease-out;
     box-shadow: 0.25vh 0.25vh 0.25vh 0.08vh rgba(0, 0, 0, 0.3), inset -0.25vh -0.25vh 0.5vh 0.08vh rgba(0, 0, 0, 1), inset 0.25vh 0.25vh 0.5vh 0.08vh rgba(255, 255, 255, 0.5);
 }
 
-    body #help:hover {
+    .game-box #help:hover {
         align-items: flex-start;
         align-content: flex-start;
-        font-size: 30px;
+        font-size: 1.1em;
         content: none;
-        height: 40%;
-        width: 12%;
+        height: 32%;
+        width: 14%;
         padding: 1%;
         border-radius: 15%;
         transition: width 0.5s ease-in, height 1.5s ease-in-out, border-radius 1.5s ease-out, padding 0.5s ease-in;
         box-shadow: 1.25vh 1.25vh 1.25vh 0.38vh rgba(0, 0, 0, 0.5), inset -1.25vh -1.25vh 2.5vh 0.38vh rgba(0, 0, 0, 0.9), inset 1.25vh 1.25vh 2.5vh 0.38vh rgba(255, 255, 255, 0.5);
     }
 
-    body #help p {
+    .game-box #help p {
         opacity: 1;
         transition: opacity 0.5s ease-in;
     }
 
-    body #help:hover p {
+    .game-box #help:hover p {
         opacity: 0;
         transition: opacity 0s ease-in;
     }
 
-    body #help:hover:before {
+    .game-box #help:hover:before {
         content: '';
         animation: show-text 2s ease-in;
         animation-fill-mode: forwards;
@@ -111,10 +111,38 @@ body #help {
     }
 }
 
-body .game-box .game-container .blink {
-    animation: blink 1.5s;
-    animation-iteration-count: infinite;
+.game-box #points {
+    height: 5%;
+    width: 14%;
+    display: flex;
+    top: 3%;
+    flex-flow: row nowrap;
+    align-items: center;
+    flex: 1;
+    position: absolute;
+    border-radius: 5%;
+    background: rgb(40, 40, 40);
+    color: white;
+    font-size: 0.5em;
+    font-family: 'Press Start 2P', cursive;
+    transition: height 0.5s ease-out, width 1.5s ease-in-out, border-radius 1.5s ease-out;
+    box-shadow: 0.25vh 0.25vh 0.25vh 0.08vh rgba(0, 0, 0, 0.3), inset -0.25vh -0.25vh 0.5vh 0.08vh rgba(0, 0, 0, 1), inset 0.25vh 0.25vh 0.5vh 0.08vh rgba(255, 255, 255, 0.5);
 }
+
+.game-box #pointHeader {
+    padding: 5%;
+    width: 20%
+}
+
+.game-box #pointNumber {
+    padding: 5%;
+    width: 65%
+}
+
+    body .game-box .game-container .blink {
+        animation: blink 1.5s;
+        animation-iteration-count: infinite;
+    }
 
 @keyframes blink {
     0% {
@@ -261,8 +289,8 @@ body .game-box .game-container .blink {
 
         #menu-container #options li {
             height: 25%;
-            font-family: 'Comforter', cursive;
-            font-size: 100px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3em;
             padding: 0;
             margin: 0;
             cursor: pointer;
@@ -302,47 +330,50 @@ body .game-box .game-container .blink {
 
 #first-circle {
     position: absolute;
-    width: 125%;
-    height: 250%;
-    top: -375%;
-    left: -170%;
     border: 300vh solid rgba(0, 0, 0, 1);
     border-radius: 100%;
     z-index: auto;
     animation: shrink 4s ease-in;
 }
 
-@keyframes shrink {
-    0% {
-        width: 125%;
-        height: 250%;
-        top: -375%;
-        left: -155%;
+@media only screen and (max-width: 1600px) {
+
+    @keyframes shrink {
+        0% {
+            width: 125%;
+            height: 250%;
+            top: -375%;
+            left: -170%;
+        }
+
+        100% {
+            width: 0;
+            height: 0;
+            top: -250%;
+            left: -114.1%;
+        }
     }
 
-    100% {
-        width: 0;
-        height: 0;
-        top: -250%;
-        left: -101.1%;
-    }
-}
+    @keyframes shrink-container {
+        0% {
+            width: 164.1%;
+            height: 300%;
+            top: -100%;
+            left: -28%;
+            opacity: 0;
+        }
 
-@keyframes shrink-container {
-    0% {
-        width: 164.1%;
-        height: 300%;
-        top: -100%;
-        left: -28%;
-        opacity: 0;
-    }
+        50% {
+            opacity: 1;
+        }
 
-    100% {
-        width: 0;
-        height: 0;
-        top: 50%;
-        left: 50%;
-        opacity: 1;
+        100% {
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+        }
     }
 }
 
